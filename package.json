@@ -11,9 +11,15 @@
     "debug": "~2.6.9",
     "express": "~4.16.1",
     "http-errors": "~1.6.3",
+    "klaw": "^3.0.0",
     "morgan": "~1.9.1",
     "pug": "2.0.0-beta11",
     "qr-image": "^3.2.0",
+    "yazl": "^2.5.1",
+    "zip-stream": "^2.0.1",
     "zlib": "^1.0.5"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.1"
   }
 }
