@@ -7,7 +7,6 @@ router.get("/", (req, res, next) => {
   res.render("index", { title: "Express" });
 });
 
-/* GET home page. */
 router.get("/generate", async (req, res, next) => {
   // an array to store the folder and files inside
   try {

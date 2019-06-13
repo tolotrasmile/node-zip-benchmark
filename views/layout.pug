@@ -4,4 +4,8 @@ html
     title= title
     link(rel='stylesheet', href='/stylesheets/style.css')
   body
+    ul
+      each link in ["/generate", "/sheets/pdf", "/sheets/convert"]
+        li
+          a(href=link)=link
     block content

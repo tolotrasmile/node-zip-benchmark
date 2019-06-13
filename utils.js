@@ -10,10 +10,9 @@ function streamDirectory(directoryPath, streamFunction = fs.createReadStream) {
     const items = [];
     klaw(directoryPath)
       .on("data", item => {
-        if (fs.lstatSync(item).isDirectory()) {
-          return;
+        if (!fs.lstatSync(item).isDirectory()) {
+          items.push(streamFunction(item.path));
         }
-        items.push(streamFunction(item.path));
       })
       .on("end", () => resolve(items))
       .on("error", (err, item) => {
@@ -25,7 +24,7 @@ function streamDirectory(directoryPath, streamFunction = fs.createReadStream) {
 const delay = (value, delay) =>
   new Promise(resolve => setTimeout(() => resolve(value), delay));
 
-const createStreams = (links = [], type = "png") =>
+const createQrCodeStreams = (links = [], type = "png") =>
   links.map(link => qr.image(link, { type }));
 
 function zipStreams(
@@ -86,4 +85,9 @@ function zipDirectory(
   });
 }
 
-module.exports = { streamDirectory, createStreams, zipStreams, zipDirectory };
+module.exports = {
+  streamDirectory,
+  createQrCodeStreams,
+  zipStreams,
+  zipDirectory
+};
